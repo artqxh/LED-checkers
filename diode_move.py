@@ -40,22 +40,27 @@ while A[0,0] == 0 and A[0,1] == 0 and A[0,2] == 0 and A[0,3] == 0:
         for j, y in enumerate(x):
             if number in y:
                 if move == 'l':
-                    if j > 0:
+                    if j > 0 and A[i-1, j-1] == 0:
                         A[i, j] = 0
-                        i = i - 1
-                        j = j - 1
-                        A[i, j] = 1
+                        A[i-1, j-1] = 1
                         print(A)
-
+                    elif j > 1 and A[i-1, j-1] == 2:
+                        A[i, j] = 0
+                        A[i-1, j-1] = 0
+                        A[i-2, j-2] = 1
+                        print(A)
                     else:
                         print('Wrong direction')
 
                 elif move == 'r':
-                    if j < 3:
+                    if j < 3 and A[i-1, j+1] == 0:
                         A[i, j] = 0
-                        i = i - 1
-                        j = j + 1
-                        A[i, j] = 1
+                        A[i-1, j+1] = 1
+                        print(A)
+                    elif j < 2 and A[i-1, j+1] == 2:
+                        A[i, j] = 0
+                        A[i-1, j+1] = 0
+                        A[i-2, j+2] = 1
                         print(A)
 
                     else:
@@ -63,4 +68,3 @@ while A[0,0] == 0 and A[0,1] == 0 and A[0,2] == 0 and A[0,3] == 0:
 
                 else:
                     print('Wrong direction')
-
