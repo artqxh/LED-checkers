@@ -29,44 +29,36 @@ print(A)
 
 number, move = input("Enter a number of checker and move(l/r): ").split()
 
-if move == 'l':
-    print('left')
-elif move == 'r':
-    print('right')
-else:
-    print('Wrong move')
-
-
-print()
-if number == 'b1' and move == 'l':
-    b1 = a2
-elif number == 'b2' and move == 'r':
-    b1 = c2
-
 
 B = np.array([['a4', 'b4', 'c4', 'd4'],
               ['a3', 'b3', 'c3', 'd3'],
               ['a2', 'b2', 'c2', 'd2'],
-              ['a1', 'b1', 'c1', 'd1']])
+              ['a1', 'b1', 'c1', 'd1']
+              ])
 
 
 
 for i, x in enumerate(B):
     for j, y in enumerate(x):
         if number in y:
-            print(i, j)
+            if move == 'l':
+                if j > 0:
+                    A[i, j] = 0
+                    i = i - 1
+                    j = j - 1
+                    A[i, j] = 1
+                    print(A)
+                else:
+                    print('Wrong direction')
+            elif move == 'r':
+                if j < 3:
+                    A[i, j] = 0
+                    i = i - 1
+                    j = j + 1
+                    A[i, j] = 1
+                    print(A)
+                else:
+                    print('Wrong direction')
+            else:
+                print('Wrong direction')
 
-
-
-if 1 == 1:
-    if move == 'l':
-        A[i, j]
-        print(A[i-1, j-1])
-    elif move == 'r':
-        A[i,j]
-        print(A[i-1, j+1])
-else:
-    print('Wrong combination')
-
-
-print(A)
