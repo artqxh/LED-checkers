@@ -1,11 +1,11 @@
 import numpy as np
 
-A = np.array([[0, 0, 0, 0, 0, 0, 0, 0],
+A = np.array([[0, 2, 0, 2, 0, 2, 0, 2],
                 [0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 2, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0],
                 [1, 0, 1, 0, 1, 0, 1, 0]
                 ])
@@ -22,47 +22,78 @@ B = np.array([['a8', 'b8', 'c8', 'd8', 'e8', 'f8', 'g8', 'h8'],
 
 print(A)
 
-while A[0,0] == 0 and A[0,1] == 0 and A[0,2] == 0 and A[0,3] == 0 and A[0,4] == 0 and A[0,5] == 0 and A[0,6] == 0 and A[0,7] == 0:
-
+while A[0,0] == 0 or 2 and A[0,1] == 0 or 2 and A[0,2] == 0 or 2 and A[0,3] == 0 or 2 and A[0,4] == 0 or 2 and A[0,5] == 0 or 2 and A[0,6] == 0 or 2  and A[0,7] == 0 or 2:
     number, move = input("Enter a number of checker and move(l/r): ").split()
 
     for i, x in enumerate(B):
-
         for j, y in enumerate(x):
-
             if number in y:
+                if A[i, j] == 1:
+                    if move == 'l':
+                        if j > 0 and A[i - 1, j - 1] == 0:
+                            A[i, j] = 0
+                            A[i - 1, j - 1] = 1
+                            print(A)
 
-                if move == 'l':
+                        elif j > 1 and A[i - 1, j - 1] == 2:
+                            A[i, j] = 0
+                            A[i - 1, j - 1] = 0
+                            A[i - 2, j - 2] = 1
+                            print(A)
 
-                    if j > 0 and A[i, j] == 1 and A[i-1, j-1] == 0:
-                        A[i, j] = 0
-                        A[i-1, j-1] = 1
-                        print(A)
+                        else:
+                            print('Wrong direction')
 
-                    elif j > 1 and A[i, j] == 1 and A[i-1, j-1] == 2:
-                        A[i, j] = 0
-                        A[i-1, j-1] = 0
-                        A[i-2, j-2] = 1
-                        print(A)
+                    elif move == 'r':
+                        if j < 7 and A[i - 1, j + 1] == 0:
+                            A[i, j] = 0
+                            A[i - 1, j + 1] = 1
+                            print(A)
+
+                        elif j < 6 and A[i - 1, j + 1] == 2:
+                            A[i, j] = 0
+                            A[i - 1, j + 1] = 0
+                            A[i - 2, j + 2] = 1
+                            print(A)
+
+                        else:
+                            print('Wrong direction')
 
                     else:
                         print('Wrong direction')
 
-                elif move == 'r':
+                elif A[i, j] == 2:
 
-                    if j < 7 and A[i, j] == 1 and A[i-1, j+1] == 0:
-                        A[i, j] = 0
-                        A[i-1, j+1] = 1
-                        print(A)
+                    if move == 'l':
 
-                    elif j < 6 and A[i, j] == 1 and A[i-1, j+1] == 2:
-                        A[i, j] = 0
-                        A[i-1, j+1] = 0
-                        A[i-2, j+2] = 1
-                        print(A)
+                        if j < 7 and A[i + 1, j + 1] == 0:
+                            A[i, j] = 0
+                            A[i + 1, j + 1] = 1
+                            print(A)
+
+                        elif j < 6 and A[i + 1, j + 1] == 1:
+                            A[i, j] = 0
+                            A[i + 1, j + 1] = 0
+                            A[i + 2, j + 2] = 2
+                            print(A)
+
+                        else:
+                            print('Wrong direction')
+
+                    elif move == 'r':
+                        if j > 0 and A[i + 1, j - 1] == 0:
+                            A[i, j] = 0
+                            A[i + 1, j - 1] = 2
+                            print(A)
+
+                        elif j > 1 and A[i - 1, j + 1] == 1:
+                            A[i, j] = 0
+                            A[i + 1, j - 1] = 0
+                            A[i + 2, j - 2] = 1
+                            print(A)
+
+                        else:
+                            print('Wrong direction')
 
                     else:
                         print('Wrong direction')
-
-                else:
-                    print('Wrong direction')
