@@ -1,12 +1,12 @@
 import numpy as np
 
 A = np.array([[0, 2, 0, 2, 0, 2, 0, 2],
+                [0, 1, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0, 0, 0, 0],
+                [2, 0, 0, 0, 0, 0, 0, 0],
                 [1, 0, 1, 0, 1, 0, 1, 0]
                 ])
 
@@ -22,7 +22,8 @@ B = np.array([['a8', 'b8', 'c8', 'd8', 'e8', 'f8', 'g8', 'h8'],
 
 print(A)
 
-while A[0,0] == 0 or 2 and A[0,1] == 0 or 2 and A[0,2] == 0 or 2 and A[0,3] == 0 or 2 and A[0,4] == 0 or 2 and A[0,5] == 0 or 2 and A[0,6] == 0 or 2  and A[0,7] == 0 or 2:
+while A[0,0] != 1 and A[0,1] != 1 and A[0,2] != 1 and A[0,3] != 1 and A[0,4] != 1 and A[0,5] != 1 and A[0,6] != 1  and A[0,7] != 1\
+        and A[7,0] != 2 and A[7,1] != 2 and A[7,2] != 2 and A[7,3] != 2 and A[7,4] != 2 and A[7,5] != 2 and A[7,6] != 2  and A[7,7] != 2:
     number, move = input("Enter a number of checker and move(l/r): ").split()
 
     for i, x in enumerate(B):
@@ -68,7 +69,7 @@ while A[0,0] == 0 or 2 and A[0,1] == 0 or 2 and A[0,2] == 0 or 2 and A[0,3] == 0
 
                         if j < 7 and A[i + 1, j + 1] == 0:
                             A[i, j] = 0
-                            A[i + 1, j + 1] = 1
+                            A[i + 1, j + 1] = 2
                             print(A)
 
                         elif j < 6 and A[i + 1, j + 1] == 1:
@@ -89,7 +90,7 @@ while A[0,0] == 0 or 2 and A[0,1] == 0 or 2 and A[0,2] == 0 or 2 and A[0,3] == 0
                         elif j > 1 and A[i - 1, j + 1] == 1:
                             A[i, j] = 0
                             A[i + 1, j - 1] = 0
-                            A[i + 2, j - 2] = 1
+                            A[i + 2, j - 2] = 2
                             print(A)
 
                         else:
