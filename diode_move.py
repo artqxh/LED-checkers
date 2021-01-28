@@ -1,12 +1,12 @@
 import numpy as np
 
 A = np.array([[0, 2, 0, 2, 0, 2, 0, 2],
-                [0, 1, 0, 0, 0, 0, 0, 0],
+                [2, 0, 2, 0, 2, 0, 2, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0],
-                [0, 0, 2, 0, 0, 0, 0, 0],
+                [0, 1, 0, 1, 0, 1, 0, 1],
                 [1, 0, 1, 0, 1, 0, 1, 0]
                 ])
 
@@ -105,7 +105,7 @@ def game(number, move):
                 print('Wrong direction')
 
 
-while list(A[7, :]).count(2) == False and list(A[0, :]).count(1) == False:
+while list(A[7]).count(2) == False and list(A[0]).count(1) == False:
     number, move = input("Enter a number of checker and move(l/r): ").split()
 
     for i, x in enumerate(B):
