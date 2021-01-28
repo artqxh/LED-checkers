@@ -6,7 +6,7 @@ A = np.array([[0, 2, 0, 2, 0, 2, 0, 2],
                 [0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0],
-                [2, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 2, 0, 0, 0, 0, 0],
                 [1, 0, 1, 0, 1, 0, 1, 0]
                 ])
 
@@ -22,8 +22,7 @@ B = np.array([['a8', 'b8', 'c8', 'd8', 'e8', 'f8', 'g8', 'h8'],
 
 print(A)
 
-while A[0,0] != 1 and A[0,1] != 1 and A[0,2] != 1 and A[0,3] != 1 and A[0,4] != 1 and A[0,5] != 1 and A[0,6] != 1  and A[0,7] != 1\
-        and A[7,0] != 2 and A[7,1] != 2 and A[7,2] != 2 and A[7,3] != 2 and A[7,4] != 2 and A[7,5] != 2 and A[7,6] != 2  and A[7,7] != 2:
+while list(A[7, :]).count(2) == False and list(A[0, :]).count(1) == False:
     number, move = input("Enter a number of checker and move(l/r): ").split()
 
     for i, x in enumerate(B):
