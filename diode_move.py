@@ -22,78 +22,92 @@ B = np.array([['a8', 'b8', 'c8', 'd8', 'e8', 'f8', 'g8', 'h8'],
 
 print(A)
 
+def player1_move_left(j):
+    if j > 0 and A[i - 1, j - 1] == 0:
+        A[i, j] = 0
+        A[i - 1, j - 1] = 1
+        print(A)
+
+    elif j > 1 and A[i - 1, j - 1] == 2:
+        A[i, j] = 0
+        A[i - 1, j - 1] = 0
+        A[i - 2, j - 2] = 1
+        print(A)
+
+    else:
+        print('Wrong direction')
+
+def player1_move_right(j):
+    if j < 7 and A[i - 1, j + 1] == 0:
+        A[i, j] = 0
+        A[i - 1, j + 1] = 1
+        print(A)
+
+    elif j < 6 and A[i - 1, j + 1] == 2:
+        A[i, j] = 0
+        A[i - 1, j + 1] = 0
+        A[i - 2, j + 2] = 1
+        print(A)
+
+    else:
+        print('Wrong direction')
+
+def player2_move_left(j):
+    if j < 7 and A[i + 1, j + 1] == 0:
+        A[i, j] = 0
+        A[i + 1, j + 1] = 2
+        print(A)
+
+    elif j < 6 and A[i + 1, j + 1] == 1:
+        A[i, j] = 0
+        A[i + 1, j + 1] = 0
+        A[i + 2, j + 2] = 2
+        print(A)
+
+    else:
+        print('Wrong direction')
+
+def player2_move_right(j):
+    if j > 0 and A[i + 1, j - 1] == 0:
+        A[i, j] = 0
+        A[i + 1, j - 1] = 2
+        print(A)
+
+    elif j > 1 and A[i - 1, j + 1] == 1:
+        A[i, j] = 0
+        A[i + 1, j - 1] = 0
+        A[i + 2, j - 2] = 2
+        print(A)
+
+    else:
+        print('Wrong direction')
+
+def game(number, move):
+    if number in y:
+        if A[i, j] == 1:
+            if move == 'l':
+                player1_move_left(j)
+
+            elif move == 'r':
+                player1_move_right(j)
+
+            else:
+                print('Wrong direction')
+
+        elif A[i, j] == 2:
+            if move == 'l':
+                player2_move_left(j)
+
+            elif move == 'r':
+                player2_move_right(j)
+
+            else:
+                print('Wrong direction')
+
+
 while list(A[7, :]).count(2) == False and list(A[0, :]).count(1) == False:
     number, move = input("Enter a number of checker and move(l/r): ").split()
 
     for i, x in enumerate(B):
         for j, y in enumerate(x):
-            if number in y:
-                if A[i, j] == 1:
-                    if move == 'l':
-                        if j > 0 and A[i - 1, j - 1] == 0:
-                            A[i, j] = 0
-                            A[i - 1, j - 1] = 1
-                            print(A)
-
-                        elif j > 1 and A[i - 1, j - 1] == 2:
-                            A[i, j] = 0
-                            A[i - 1, j - 1] = 0
-                            A[i - 2, j - 2] = 1
-                            print(A)
-
-                        else:
-                            print('Wrong direction')
-
-                    elif move == 'r':
-                        if j < 7 and A[i - 1, j + 1] == 0:
-                            A[i, j] = 0
-                            A[i - 1, j + 1] = 1
-                            print(A)
-
-                        elif j < 6 and A[i - 1, j + 1] == 2:
-                            A[i, j] = 0
-                            A[i - 1, j + 1] = 0
-                            A[i - 2, j + 2] = 1
-                            print(A)
-
-                        else:
-                            print('Wrong direction')
-
-                    else:
-                        print('Wrong direction')
-
-                elif A[i, j] == 2:
-
-                    if move == 'l':
-
-                        if j < 7 and A[i + 1, j + 1] == 0:
-                            A[i, j] = 0
-                            A[i + 1, j + 1] = 2
-                            print(A)
-
-                        elif j < 6 and A[i + 1, j + 1] == 1:
-                            A[i, j] = 0
-                            A[i + 1, j + 1] = 0
-                            A[i + 2, j + 2] = 2
-                            print(A)
-
-                        else:
-                            print('Wrong direction')
-
-                    elif move == 'r':
-                        if j > 0 and A[i + 1, j - 1] == 0:
-                            A[i, j] = 0
-                            A[i + 1, j - 1] = 2
-                            print(A)
-
-                        elif j > 1 and A[i - 1, j + 1] == 1:
-                            A[i, j] = 0
-                            A[i + 1, j - 1] = 0
-                            A[i + 2, j - 2] = 2
-                            print(A)
-
-                        else:
-                            print('Wrong direction')
-
-                    else:
-                        print('Wrong direction')
+            game(number,move)
