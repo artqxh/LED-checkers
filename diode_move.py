@@ -73,7 +73,7 @@ def player2_move_right(j):
         A[i + 1, j - 1] = 2
         print(A)
 
-    elif j > 1 and A[i - 1, j + 1] == 1:
+    elif j > 1 and A[i + 1, j - 1] == 1:
         A[i, j] = 0
         A[i + 1, j - 1] = 0
         A[i + 2, j - 2] = 2
@@ -106,7 +106,7 @@ def game(number, move):
 
 
 while list(A[7]).count(2) == False and list(A[0]).count(1) == False:
-    number, move = input("Enter a number of checker and move(l/r): ").split()
+    number, move = input("Enter a number of checker and move (l/r): ").split()
 
     for i, x in enumerate(B):
         for j, y in enumerate(x):
